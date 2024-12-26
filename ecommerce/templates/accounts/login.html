@@ -6,6 +6,12 @@
     <title>Login Page</title>
 </head>
 <body>
+    <h1 class="">Log in</h1>
+    {% if messages %}
+    {% for message in messages %}
+        <h1 class="badge badge-light" style="color: tomato;">{{message}}</h1>
+    {% endfor %}
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         <input type="text" name="username" id="username" placeholder="Username">
@@ -14,3 +20,4 @@
     </form>
 </body>
 </html>
+

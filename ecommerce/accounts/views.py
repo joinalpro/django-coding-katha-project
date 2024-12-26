@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from core.models import *
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+
+from django.contrib import messages
 # Create your views here.
 
 def user_login(request):
@@ -42,6 +45,7 @@ def user_register(request):
                     if our_user is not None:
                         login(request, user)
                         return redirect('/')
+                    messages.info(request,"Login Failed, Please Try Again!")
         else:
             print("Error Here...")
             return redirect('user_register')
